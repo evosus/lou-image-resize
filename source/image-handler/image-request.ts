@@ -466,6 +466,10 @@ export class ImageRequest {
         return ContentTypes.TIFF;
       case "47494638":
         return ContentTypes.GIF;
+      case "6D6F6F76":
+        return ContentTypes.MOV;
+      case "00000018":
+        return ContentTypes.MP4;
       default:
         throw new ImageHandlerError(
           StatusCodes.INTERNAL_SERVER_ERROR,

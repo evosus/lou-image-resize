@@ -1,8 +1,8 @@
 {
   "app": "npx ts-node --prefer-ts-exts bin/constructs.ts",
   "context": {
-    "solutionId": "SO0023",
-    "solutionVersion": "custom-v6.2.5",
-    "solutionName": "serverless-image-handler"
+    "solutionId": "LOU001",
+    "solutionVersion": "resize-v6.2.4",
+    "solutionName": "lou-image-resize"
   }
 }
