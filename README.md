@@ -68,11 +68,14 @@ chmod +x run-unit-tests.sh && ./run-unit-tests.sh
 ```bash
 cd $MAIN_DIRECTORY/source/constructs
 npm run clean:install
-overrideWarningsEnabled=false npx cdk bootstrap --profile <PROFILE_NAME>
+overrideWarningsEnabled=false npx cdk bootstrap --profile default
 overrideWarningsEnabled=false npx cdk deploy\
- --parameters DeployDemoUIParameter=Yes\
-  --parameters SourceBucketsParameter=<MY_BUCKET>\
-   --profile <PROFILE_NAME>
+  --parameters DeployDemoUIParameter=Yes\
+   --parameters SourceBucketsParameter=evosusapp-prod,evosusapp-accp,evosusapp-test,evosusapp-dev\
+    --parameters EnableDefaultFallbackImageParameter=Yes\
+     --parameters FallbackImageS3BucketParameter=evosusapp-test\
+      --parameters FallbackImageS3KeyParameter=default.png\
+       --profile default
 ```
 
 _Note:_
