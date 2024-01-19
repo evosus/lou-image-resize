@@ -19,10 +19,11 @@ if (DIST_OUTPUT_BUCKET && SOLUTION_NAME && VERSION)
   });
 
 const app = new App();
-const solutionDisplayName = "Serverless Image Handler";
+const solutionDisplayName = "LOU Image Resize Handler";
+const solutionStackName = "lou-image-resize";
 const description = `(${app.node.tryGetContext("solutionId")}) - ${solutionDisplayName}. Version ${VERSION ?? app.node.tryGetContext("solutionVersion")}`;
 // eslint-disable-next-line no-new
-new ServerlessImageHandlerStack(app, "ServerlessImageHandlerStack", {
+new ServerlessImageHandlerStack(app, solutionStackName, {
   synthesizer: synthesizer,
   description: description,
   solutionId: app.node.tryGetContext("solutionId"),
