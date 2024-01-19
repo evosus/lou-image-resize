@@ -49,10 +49,17 @@ In addition to the AWS Solutions Constructs, the solution uses AWS CDK directly 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/aws-solutions/serverless-image-handler.git
-cd serverless-image-handler
+git clone https://github.com/lou-image-reisze.git
+cd lou-image-resize
 export MAIN_DIRECTORY=$PWD
 ```
+
+### 2. Get AWS CLI connect to our AWS Account
+
+Request account access from SHawkins or CHolton. At a minimum you need access to S3 and Cloudformation.
+
+
+
 
 
 ### 2. Unit Test
@@ -67,47 +74,10 @@ chmod +x run-unit-tests.sh && ./run-unit-tests.sh
 ### 3. Build and Deploy
 ```bash
 cd $MAIN_DIRECTORY/source/constructs
-npm run clean:install
-overrideWarningsEnabled=false npx cdk bootstrap --profile default
-overrideWarningsEnabled=false npx cdk deploy\
-  --parameters DeployDemoUIParameter=Yes\
-   --parameters SourceBucketsParameter=evosusapp-prod,evosusapp-accp,evosusapp-test,evosusapp-dev\
-    --parameters EnableDefaultFallbackImageParameter=Yes\
-     --parameters FallbackImageS3BucketParameter=evosusapp-test\
-      --parameters FallbackImageS3KeyParameter=default.png\
-       --profile default
+npm run build
+npm run deploy:qa (or deploy:prod)
 ```
 
-_Note:_
-- **MY_BUCKET**: name of an existing bucket in your account
-- **PROFILE_NAME**: name of an AWS CLI profile that has appropriate credentials for deploying in your preferred region
-
-# Collection of operational metrics
-
-This solution collects anonymous operational metrics to help AWS improve the quality and features of the solution. For more information, including how to disable this capability, please see the [implementation guide](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/op-metrics.html).
-
-# External Contributors
-
-- [@leviwilson](https://github.com/leviwilson) for [#117](https://github.com/aws-solutions/serverless-image-handler/pull/117)
-- [@rpong](https://github.com/rpong) for [#130](https://github.com/aws-solutions/serverless-image-handler/pull/130)
-- [@harriswong](https://github.com/harriswong) for [#138](https://github.com/aws-solutions/serverless-image-handler/pull/138)
-- [@ganey](https://github.com/ganey) for [#139](https://github.com/aws-solutions/serverless-image-handler/pull/139)
-- [@browniebroke](https://github.com/browniebroke) for [#151](https://github.com/aws-solutions/serverless-image-handler/pull/151), [#152](https://github.com/aws-solutions/serverless-image-handler/pull/152)
-- [@john-shaffer](https://github.com/john-shaffer) for [#158](https://github.com/aws-solutions/serverless-image-handler/pull/158)
-- [@toredash](https://github.com/toredash) for [#174](https://github.com/aws-solutions/serverless-image-handler/pull/174), [#195](https://github.com/aws-solutions/serverless-image-handler/pull/195)
-- [@lith-imad](https://github.com/lith-imad) for [#194](https://github.com/aws-solutions/serverless-image-handler/pull/194)
-- [@pch](https://github.com/pch) for [#227](https://github.com/aws-solutions/serverless-image-handler/pull/227)
-- [@atrope](https://github.com/atrope) for [#201](https://github.com/aws-solutions/serverless-image-handler/pull/201), [#202](https://github.com/aws-solutions/serverless-image-handler/pull/202)
-- [@bretto36](https://github.com/bretto36) for [#182](https://github.com/aws-solutions/serverless-image-handler/pull/182)
-- [@makoncline](https://github.com/makoncline) for [#255](https://github.com/aws-solutions/serverless-image-handler/pull/255)
-- [@frankenbubble](https://github.com/frankenbubble) for [#302](https://github.com/aws-solutions/serverless-image-handler/pull/302)
-- [@guidev](https://github.com/guidev) for [#309](https://github.com/aws-solutions/serverless-image-handler/pull/309)
-- [@njtmead](https://github.com/njtmead) for [#276](https://github.com/aws-solutions/serverless-image-handler/pull/276)
-- [@StaymanHou](https://github.com/StaymanHou) for [#320](https://github.com/aws-solutions/serverless-image-handler/pull/320)
-- [@alenpaulvarghese](https://github.com/alenpaulvarghese) for [#392](https://github.com/aws-solutions/serverless-image-handler/pull/392)
-- [@Fjool](https://github.com/Fjool) for [#489](https://github.com/aws-solutions/serverless-image-handler/pull/489)
-- [@fvsnippets](https://github.com/fvsnippets) for [#373](https://github.com/aws-solutions/serverless-image-handler/pull/373), [#380](https://github.com/aws-solutions/serverless-image-handler/pull/380)
-- [@ccchapman](https://github.com/ccchapman) for [#490](https://github.com/aws-solutions/serverless-image-handler/pull/490)
 
 # License
 
