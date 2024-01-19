@@ -10,7 +10,8 @@ let synthesizer = new DefaultStackSynthesizer({
 });
 
 // Solutions pipeline deployment
-const { DIST_OUTPUT_BUCKET, SOLUTION_NAME, VERSION } = process.env;
+const { LOU_ENV, DIST_OUTPUT_BUCKET, SOLUTION_NAME, VERSION } = process.env;
+
 if (DIST_OUTPUT_BUCKET && SOLUTION_NAME && VERSION)
   synthesizer = new DefaultStackSynthesizer({
     generateBootstrapVersionRule: false,
@@ -19,8 +20,9 @@ if (DIST_OUTPUT_BUCKET && SOLUTION_NAME && VERSION)
   });
 
 const app = new App();
+let lou_env = LOU_ENV ? `-${LOU_ENV}` : '';
 const solutionDisplayName = "LOU Image Resize Handler";
-const solutionStackName = "lou-image-resize";
+const solutionStackName = `lou-image-resize${lou_env}`;
 const description = `(${app.node.tryGetContext("solutionId")}) - ${solutionDisplayName}. Version ${VERSION ?? app.node.tryGetContext("solutionVersion")}`;
 // eslint-disable-next-line no-new
 new ServerlessImageHandlerStack(app, solutionStackName, {

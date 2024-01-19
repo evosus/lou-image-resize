@@ -17,7 +17,9 @@
     "pretest": "npm run clean:install",
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "overrideWarningsEnabled=false jest --coverage"
+    "test": "overrideWarningsEnabled=false jest --coverage",
+    "deploy:qa": "npm run build && env LOU_ENV=qa overrideWarningsEnabled=false npx cdk deploy --parameters DeployDemoUIParameter=Yes --parameters SourceBucketsParameter=evosusapp-prod,evosusapp-accp,evosusapp-test,evosusapp-dev --parameters EnableDefaultFallbackImageParameter=Yes --parameters FallbackImageS3BucketParameter=evosusapp-test --parameters FallbackImageS3KeyParameter=default.png --profile default",
+    "deploy:prod": "npm run build && env LOU_ENV=prod overrideWarningsEnabled=false npx cdk deploy --parameters DeployDemoUIParameter=Yes --parameters SourceBucketsParameter=evosusapp-prod,evosusapp-accp,evosusapp-test,evosusapp-dev --parameters EnableDefaultFallbackImageParameter=Yes --parameters FallbackImageS3BucketParameter=evosusapp-test --parameters FallbackImageS3KeyParameter=default.png --profile default"
   },
   "devDependencies": {
     "@aws-cdk/aws-servicecatalogappregistry-alpha": "v2.118.0-alpha.0",
